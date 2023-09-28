@@ -9,21 +9,17 @@ public class SpaceShipController : MonoBehaviour
 
     private Rigidbody2D _rb2d;
     public GameObject prefabLaser;
+    private float _playerLaserSpeed = 15f; // Defina a velocidade do laser do jogador aqui
 
-    // Start is called before the first frame update
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         _h = Input.GetAxisRaw("Horizontal");
         _v = Input.GetAxisRaw("Vertical");
-
-        //transform.Translate(h*_speedX*Time.deltaTime,v*_speedY* Time.deltaTime, 0);
         Atirar();
     }
 
@@ -31,27 +27,34 @@ public class SpaceShipController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(prefabLaser, transform.position + new Vector3(0, 1, 0), transform.rotation);
+            GameObject laser = Instantiate(prefabLaser, transform.position + new Vector3(0, 1, 0), transform.rotation);
+            LaserPrefab laserScript = laser.GetComponent<LaserPrefab>();
+            laserScript.laserSpeed = _playerLaserSpeed; // Configura a velocidade do laser do jogador
         }
     }
+
     void FixedUpdate()
     {
-        _rb2d.MovePosition(_rb2d.position + new Vector2(_h,_v)*_speed*Time.deltaTime);
+        _rb2d.MovePosition(_rb2d.position + new Vector2(_h, _v) * _speed * Time.deltaTime);
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        //Destroy(other.gameObject);
+        if (other.gameObject.CompareTag("inimigo")){
+            Destroy(this.gameObject);
+            Destroy(other.gameObject);
+        }
+        
     }
 
     void OnCollisionStay2D(Collision2D other)
     {
-        print("A colis„o est· acontecendo: stay");
+        print("A colis√£o est√° acontecendo: stay");
     }
 
     void OnCollisionExit2D(Collision2D other)
     {
-        print("A colis„o deixou de acontecer: exit");
+        print("A colis√£o deixou de acontecer: exit");
     }
 
     void OnTriggerEnter2D(Collider2D other)

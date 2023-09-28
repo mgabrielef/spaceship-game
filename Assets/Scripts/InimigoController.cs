@@ -5,12 +5,13 @@ using UnityEngine;
 public class InimigoController : MonoBehaviour
 {
     [SerializeField]
-    private float _speed = -8f;
+    private float _speed = -6f;
 
     private Rigidbody2D _rb2d;
 
     private void Start()
     {
+        Destroy(this.gameObject, 3f);
         _rb2d = GetComponent<Rigidbody2D>();
     }
 
