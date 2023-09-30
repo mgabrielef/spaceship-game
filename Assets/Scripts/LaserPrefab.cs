@@ -31,6 +31,7 @@ public class LaserPrefab : MonoBehaviour
         }else if(other.CompareTag("player")){
             Destroy(this.gameObject);
             Destroy(other.gameObject);
+            Time.timeScale = 0;
         }
     }
 }
