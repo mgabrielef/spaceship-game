@@ -43,6 +43,7 @@ public class SpaceShipController : MonoBehaviour
         if (other.gameObject.CompareTag("inimigo")){
             Destroy(this.gameObject);
             Destroy(other.gameObject);
+            Time.timeScale = 0;
         }
         
     }
