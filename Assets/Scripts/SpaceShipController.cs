@@ -9,7 +9,7 @@ public class SpaceShipController : MonoBehaviour
 
     private Rigidbody2D _rb2d;
     public GameObject prefabLaser;
-    private float _playerLaserSpeed = 15f; // Defina a velocidade do laser do jogador aqui
+    private float _playerLaserSpeed = 15f; 
 
     void Start()
     {
@@ -29,7 +29,7 @@ public class SpaceShipController : MonoBehaviour
         {
             GameObject laser = Instantiate(prefabLaser, transform.position + new Vector3(0, 1, 0), transform.rotation);
             LaserPrefab laserScript = laser.GetComponent<LaserPrefab>();
-            laserScript.laserSpeed = _playerLaserSpeed; // Configura a velocidade do laser do jogador
+            laserScript.laserSpeed = _playerLaserSpeed; 
         }
     }
 
@@ -48,18 +48,4 @@ public class SpaceShipController : MonoBehaviour
         
     }
 
-    void OnCollisionStay2D(Collision2D other)
-    {
-        print("A colisão está acontecendo: stay");
-    }
-
-    void OnCollisionExit2D(Collision2D other)
-    {
-        print("A colisão deixou de acontecer: exit");
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        print("Trigger enter!");
-    }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3802213274945748388}
   m_Layer: 0
   m_Name: laserRed01
-  m_TagString: Untagged
+  m_TagString: tiroPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d7f90130abfd148a569dce0ee58ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laserSpeed: 15
+  ContagemPontos: {fileID: 0}
 --- !u!50 &8271578110967610322
 Rigidbody2D:
   serializedVersion: 4
